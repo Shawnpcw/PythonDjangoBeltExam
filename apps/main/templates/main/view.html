@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Login and Registration</title>
+  </head>
+  <body >
+    <div class="container pt-5">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light row">                     
+          <div class="collapse navbar-collapse col-md-2" id="navbarSupportedContent">                        
+                                                   
+          </div>
+          <div class="col-md-8"></div>
+          <div class="col-md-1">
+              <a href="{% url 'main:travel' %}" class="ml-5">Back</a>
+          </div>
+          <div class="col-md-1">
+                <a href="{% url 'main:logout' %}" >Logout</a>    
+          </div>
+        </nav>
+        <div class="row mt-5">
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{{tripInfo.desc}}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 ml-4">
+                        <h5>Planned by: {{tripInfo.trip_creater.first_name}} {{tripInfo.trip_creater.last_name}}</h5>
+                        <h5>Description: {{tripInfo.plan}}</h5>
+                        <h5>Travel Date From: {{tripInfo.start_date}}</h5>
+                        <h5>Travel Date To: {{tripInfo.end_date}}</h5>
+                    </div>
+                </div>
+                <!-- if statment here -->
+                {% if attendees %}
+                <div class="row">
+                        <div class="col-md-12">
+                            <h1>{{tripInfo.desc}}</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 ml-4">
+                            {% for attendee in attendees%}
+                            <h5>{{attendee.first_name}} {{attendee.last_name}}</h5>
+                        
+                            {%endfor%}
+                        </div>
+                    </div>
+                    {%endif%}
+                <!-- to here -->
+            </div>
+        </div>
+    </div>
+
+    
+        
+    
+
+
+
+   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
